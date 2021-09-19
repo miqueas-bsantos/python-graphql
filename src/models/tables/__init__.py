@@ -14,7 +14,7 @@ Base.query = db_session.query_property()
 
 class User(Base):
     __tablename__ = 'TB_USER'
-    id = Column(String(255), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100))
     profession = Column(String(100))
     age = Column(Integer)
@@ -23,15 +23,15 @@ class User(Base):
 
 class Hobby(Base):
     __tablename__ = 'TB_HOBBY'
-    id = Column(String(255), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(100))
     description = Column(String(100))
-    user_id = Column(String(255), ForeignKey('TB_USER.id'))
+    user_id = Column(Integer, ForeignKey('TB_USER.id'))
 
 class Post(Base):
     __tablename__ = 'TB_POST'
-    id = Column(String(255), primary_key=True,  autoincrement=True)
+    id = Column(Integer, primary_key=True,  autoincrement=True)
     comment = Column(String(255))
-    user_id = Column(String(255), ForeignKey('TB_USER.id'))
+    user_id = Column(Integer, ForeignKey('TB_USER.id'))
 
 Base.metadata.create_all(bind=engine)
